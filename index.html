@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Зерно — кофейня и ростерия. Меню, обжарка, адреса и бронь столика.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Зерно — 3D кофейня</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<header>
+  <a class="logo" href="#home"><i></i>Зерно</a>
+  <nav aria-label="Разделы">
+    <a href="#home">Главная</a><a href="#menu">Меню</a><a href="#roast">Обжарка</a><a href="#visit">Адреса</a>
+  </nav>
+  <button class="cartbtn" id="cartOpen" aria-label="Открыть заказ">Заказ <b id="badge">0</b></button>
+</header>
+<main>
+  <section class="page" id="p-home">
+    <div class="hero">
+      <div>
+        <h1 class="in">Кофе, который обжаривают за&nbsp;стеной</h1>
+        <p class="lead in">Свежая обжарка каждое утро, чашка за пять минут и столик у окна. Три кофейни в городе, одна ростерия.</p>
+        <div class="btns in"><a class="btn red" href="#menu">Смотреть меню</a><a class="btn" href="#visit">Забронировать стол</a></div>
+        <div class="facts in">
+          <div><b>3</b><span>кофейни</span></div>
+          <div><b>12</b><span>сортов зерна</span></div>
+          <div><b>7:30</b><span>открываемся</span></div>
+        </div>
+        <p class="demo">Демо-сайт: кофейня «Зерно» и все данные вымышлены.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="p-menu">
+    <div class="split">
+      <div class="panel in">
+        <h2>Меню</h2>
+        <p class="sub">Собирайте заказ заранее — заберёте без очереди.</p>
+        <div class="tabs" role="tablist" id="tabs"></div>
+        <div class="items" id="items"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="p-roast">
+    <div class="roast">
+      <div class="panel in">
+        <h2>Выберите степень обжарки</h2>
+        <p class="sub">Двигайте ползунок и смотрите, как темнеют зёрна в барабане.</p>
+        <input type="range" id="roastR" min="0" max="100" value="45" aria-label="Степень обжарки">
+        <div class="scale"><span>Светлая</span><span>Средняя</span><span>Тёмная</span></div>
+        <div class="lvl" id="lvl">Средняя</div>
+        <p class="sub" id="lvlTxt" style="margin:0"></p>
+        <div class="notes" id="notes"></div>
+        <ol class="steps">
+          <li><b>1</b><div><h3>Отбор</h3><p>Зелёное зерно сортируем вручную, убираем дефекты.</p></div></li>
+          <li><b>2</b><div><h3>Барабан</h3><p>12–16 минут при постоянном контроле температуры.</p></div></li>
+          <li><b>3</b><div><h3>Отдых</h3><p>Зерно «дышит» 3 дня, прежде чем попасть в кофемолку.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="p-visit">
+    <div class="split">
+      <div class="panel in">
+        <h2>Адреса и бронь</h2>
+        <div class="locs" id="locs"></div>
+        <form id="book" novalidate>
+          <div class="f2">
+            <label>Имя<input id="bName" required autocomplete="name" placeholder="Анна"></label>
+            <label>Телефон<input id="bTel" type="tel" required autocomplete="tel" placeholder="+48 500 000 000"></label>
+          </div>
+          <div class="f2">
+            <label>Дата<input id="bDate" type="date" required></label>
+            <label>Время<select id="bTime"></select></label>
+          </div>
+          <label>Гостей<select id="bG"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+          <button class="btn red" type="submit">Забронировать</button>
+          <div class="ok" id="ok" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><span>© Зерно, кофейня и ростерия</span><span>Ежедневно 7:30–21:00</span><span>hello@zerno.coffee</span></footer>
+
+<aside class="drawer" id="drawer" aria-label="Ваш заказ">
+  <button class="x" id="cartClose" aria-label="Закрыть">×</button>
+  <h2 style="font-size:28px">Ваш заказ</h2>
+  <div class="lines" id="lines"></div>
+  <div class="total"><span>Итого</span><span id="total">0 zł</span></div>
+  <button class="btn red" id="checkout">Оформить к самовывозу</button>
+  <div class="ok" id="ok2" role="status"></div>
+</aside>
+<div class="wipe" id="wipe"><span>Зерно</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/scene.js"></script>
+</body>
+</html>

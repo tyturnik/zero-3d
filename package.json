@@ -1,0 +1,9 @@
+{
+  "name": "zerno-3d-cafe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Многостраничный 3D-сайт кофейни на Three.js",
+  "scripts": {
+    "dev": "npx serve ."
+  }
+}
